@@ -1,0 +1,44 @@
+name: Terraform Plan
+on:
+  workflow_dispatch:
+    inputs:
+      service:
+        type: choice
+        description: Kubernetes service to provision
+        options:
+          - eks
+env:
+  AWS_REGION : "ap-southeast-1"
+permissions:
+      id-token: write 
+      contents: read
+jobs:
+  TerraformPlan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+        
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.6
+          
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
+          role-session-name: provisioningsession
+          aws-region: ${{ env.AWS_REGION }}
+        
+      - name: Terraform Init
+        id: init
+        run: |
+          cd "${{ github.event.inputs.service }}" 
+          terraform init
+        
+      - name: Terraform Plan
+        id: plan
+        run: |
+          echo "## Terraform Plan" >> $GITHUB_STEP_SUMMARY
+          terraform plan -no-color >> $GITHUB_STEP_SUMMARY
