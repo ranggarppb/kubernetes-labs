@@ -1,6 +1,6 @@
 name: Terraform Plan
 on:
-  repository-dispatch:
+  workflow_dispatch:
     types: 
     inputs:
       service:
