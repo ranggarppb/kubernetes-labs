@@ -26,20 +26,24 @@ jobs:
           terraform_version: 1.5.6
           
       - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        id: creds
+        uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
-          role-session-name: provisioning-session
+          role-session-name: terraform_plan_session
           aws-region: ${{ env.AWS_REGION }}
+          output-credentials: true
         
       - name: Terraform Init
         id: init
         run: |
           cd "${{ github.event.inputs.service }}" 
           terraform init
+
         
       - name: Terraform Plan
         id: plan
         run: |
+          cd "${{ github.event.inputs.service }}" 
           echo "## Terraform Plan" >> $GITHUB_STEP_SUMMARY
           terraform plan -no-color >> $GITHUB_STEP_SUMMARY
