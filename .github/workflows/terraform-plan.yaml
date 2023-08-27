@@ -19,7 +19,6 @@ jobs:
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
-        ref: ${{ github.event.inputs.branch }}
         
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -30,7 +29,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
-          role-session-name: provisioningsession
+          role-session-name: provisioning-session
           aws-region: ${{ env.AWS_REGION }}
         
       - name: Terraform Init
