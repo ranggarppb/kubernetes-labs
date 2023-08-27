@@ -1,14 +1,14 @@
 provider "aws" {
-  shared_credentials_files = ["~/.aws/credentials"]
-  shared_config_files      = ["~/.aws/config"]
-  profile                  = "ranggarppb"
+	
+  assume_role_with_web_identity {
+	role_arn = "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
+  }
 
   region = "ap-southeast-1"
 }
 
 terraform {
   backend "s3" {
-    profile = "ranggarppb"
     key     = "eks/terraform.tfstate"
     bucket  = "kubernetes-labs"
     region  = "ap-southeast-1"

@@ -29,14 +29,16 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
-          role-session-name: provisioning-session
+          role-session-name: terraform_plan_session
           aws-region: ${{ env.AWS_REGION }}
+          output-credentials: true
         
       - name: Terraform Init
         id: init
         run: |
           cd "${{ github.event.inputs.service }}" 
           terraform init
+
         
       - name: Terraform Plan
         id: plan
