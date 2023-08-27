@@ -31,7 +31,6 @@ jobs:
           role-to-assume: "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
           role-session-name: terraform_plan_session
           aws-region: ${{ env.AWS_REGION }}
-          web-identity-token-file: /tmp/awscreds
         
       - name: Terraform Init
         id: init
