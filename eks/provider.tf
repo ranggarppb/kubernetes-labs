@@ -1,10 +1,4 @@
 provider "aws" {
-
-  assume_role_with_web_identity {
-	role_arn = "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
-	web_identity_token_file = "/tmp/awscreds"
-  }
-
   region = "ap-southeast-1"
 }
 
