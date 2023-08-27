@@ -31,6 +31,7 @@ jobs:
           role-to-assume: "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
           role-session-name: terraform_plan_session
           aws-region: ${{ env.AWS_REGION }}
+          output-credentials: true
         
       - name: Terraform Init
         id: init
@@ -42,7 +43,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: |
-          echo "## Web idneity token file" >> $AWS_WEB_IDENTITY_TOKEN_FILE
+          echo ${{ steps.creds.outputs }}
           cd "${{ github.event.inputs.service }}" 
           echo "## Terraform Plan" >> $GITHUB_STEP_SUMMARY
           terraform plan -no-color >> $GITHUB_STEP_SUMMARY
