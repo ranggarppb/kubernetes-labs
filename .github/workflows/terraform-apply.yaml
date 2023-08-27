@@ -1,4 +1,4 @@
-name: Terraform Plan
+name: Terraform Apply
 on:
   workflow_dispatch:
     types: 
@@ -30,7 +30,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
-          role-session-name: terraform_plan_session
+          role-session-name: terraform_apply_session
           aws-region: ${{ env.AWS_REGION }}
           output-credentials: true
         
@@ -41,9 +41,8 @@ jobs:
           terraform init
 
         
-      - name: Terraform Plan
-        id: plan
+      - name: Terraform Apply
+        id: apply
         run: |
           cd "${{ github.event.inputs.service }}" 
-          echo "## Terraform Plan" >> $GITHUB_STEP_SUMMARY
-          terraform plan -no-color >> $GITHUB_STEP_SUMMARY
+          terraform apply -auto-approve
