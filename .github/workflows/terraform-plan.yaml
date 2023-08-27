@@ -41,5 +41,6 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: |
+          cd "${{ github.event.inputs.service }}" 
           echo "## Terraform Plan" >> $GITHUB_STEP_SUMMARY
           terraform plan -no-color >> $GITHUB_STEP_SUMMARY
