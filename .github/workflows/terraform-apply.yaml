@@ -30,7 +30,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
-          role-session-name: terraform_plan_session
+          role-session-name: terraform_apply_session
           aws-region: ${{ env.AWS_REGION }}
           output-credentials: true
         
