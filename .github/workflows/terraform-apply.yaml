@@ -1,0 +1,48 @@
+name: Terraform Apply
+on:
+  workflow_dispatch:
+    types: 
+    inputs:
+      service:
+        type: choice
+        description: Kubernetes service to provision
+        options:
+          - eks
+env:
+  AWS_REGION : "ap-southeast-1"
+permissions:
+      id-token: write 
+      contents: read
+jobs:
+  TerraformApply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+        
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.6
+          
+      - name: configure aws credentials
+        id: creds
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: "arn:aws:iam::020612890700:role/gha_oidc_assume_role"
+          role-session-name: terraform_apply_session
+          aws-region: ${{ env.AWS_REGION }}
+          output-credentials: true
+        
+      - name: Terraform Init
+        id: init
+        run: |
+          cd "${{ github.event.inputs.service }}" 
+          terraform init
+
+        
+      - name: Terraform Apply
+        id: apply
+        run: |
+          cd "${{ github.event.inputs.service }}" 
+          terraform apply -auto-approve
