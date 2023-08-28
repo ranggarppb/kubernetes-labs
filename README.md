@@ -18,6 +18,7 @@ Features supported:
 
 Next steps:
 - Add Terraform Destroy pipeline
+- Protect Action to be run on permitted party
 - Add how to readme
 - Enable running with .env variable
 - Add AKS (Azure) and GKE (Google)
