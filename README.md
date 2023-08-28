@@ -12,11 +12,12 @@ Features supported:
 	- NAT Gateway
 	- Routing Tables
 	- EKS Cluster and Workers
-	
+
 	![Building Blocks](eks.png)
 - Terraform Plan, Apply CI/CD with OICD
 
 Next steps:
 - Add Terraform Destroy pipeline
-- Enabling running OIDC with .env variable
+- Add how to readme
+- Enable running with .env variable
 - Add AKS (Azure) and GKE (Google)
