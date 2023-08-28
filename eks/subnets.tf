@@ -38,9 +38,9 @@ resource "aws_subnet" "kubernetes_labs_private_1" {
   availability_zone = "ap-southeast-1a"
 
   tags = {
-    Name                        = "main-private-1"
-    "kubernetes.io/cluster/eks" = "shared"
-    "kubernetes.io/role/internal-elb"    = 1
+    Name                              = "main-private-1"
+    "kubernetes.io/cluster/eks"       = "shared"
+    "kubernetes.io/role/internal-elb" = 1
   }
 }
 
@@ -52,8 +52,8 @@ resource "aws_subnet" "kubernetes_labs_private_2" {
   availability_zone = "ap-southeast-1b"
 
   tags = {
-    Name                        = "main-private-2"
-    "kubernetes.io/cluster/eks" = "shared"
-    "kubernetes.io/role/internal-elb"    = 1
+    Name                              = "main-private-2"
+    "kubernetes.io/cluster/eks"       = "shared"
+    "kubernetes.io/role/internal-elb" = 1
   }
 }
