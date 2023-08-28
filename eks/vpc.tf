@@ -7,6 +7,6 @@ resource "aws_vpc" "kubernetes_labs" {
   assign_generated_ipv6_cidr_block = false
 
   tags = {
-    Name = "main vpc"
+    Name = "main"
   }
 }
