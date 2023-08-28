@@ -12,6 +12,8 @@ Features supported:
 	- NAT Gateway
 	- Routing Tables
 	- EKS Cluster and Workers
+	
+	![Building Blocks](eks.png)
 - Terraform Plan, Apply CI/CD with OICD
 
 Next steps:
