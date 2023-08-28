@@ -1,7 +1,7 @@
 resource "aws_iam_role" "kubernetes_labs" {
   name = "eks-cluster"
 
-  assume_role_policy = <<POLICY
+  assume_role_policy = <<EOT
 {
 "Version": "2012-10-17"
 "Statement": [
@@ -14,7 +14,7 @@ resource "aws_iam_role" "kubernetes_labs" {
 	}
 ]
 }
-POLICY
+EOT
 }
 
 resource "aws_iam_role_policy_attachment" "kubernetes_labs" {
