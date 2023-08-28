@@ -9,7 +9,7 @@ resource "aws_iam_role" "kubernetes_labs" {
 		"Effect": "Allow",
 		"Principal": {
 			"Service": "eks.amazonaws.com"
-		}
+		},
 		"Action": "sts:AssumeRole"
 	}
 ]
@@ -34,7 +34,7 @@ resource "aws_iam_role" "kubernetes_labs_workers" {
 		"Effect": "Allow",
 		"Principal": {
 			"Service": "ec2.amazonaws.com"
-		}
+		},
 		"Action": "sts:AssumeRole"
 	}
 ]
