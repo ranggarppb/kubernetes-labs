@@ -18,8 +18,8 @@ EOT
 }
 
 resource "aws_iam_role_policy_attachment" "kubernetes_labs" {
-  policy_arn = "arn:aws:iam:aws:policy/AmazonEKSClusterPolicy"
-
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  
   role = aws_iam_role.kubernetes_labs.name
 }
 
@@ -43,19 +43,19 @@ EOT
 }
 
 resource "aws_iam_role_policy_attachment" "kubernetes_labs_workers_general" {
-  policy_arn = "arn:aws:iam:aws:policy/AmazonEKSWorkerNodePolicy"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 
   role = aws_iam_role.kubernetes_labs_workers.name
 }
 
 resource "aws_iam_role_policy_attachment" "kubernetes_labs_workers_cni_policy" {
-  policy_arn = "arn:aws:iam:aws:policy/AmazonEKS_CNI_Policy"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 
   role = aws_iam_role.kubernetes_labs_workers.name
 }
 
 resource "aws_iam_role_policy_attachment" "kubernetes_labs_workers_ecr_policy" {
-  policy_arn = "arn:aws:iam:aws:policy/AmazonEC2ContainerRegistryReadOnly"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 
   role = aws_iam_role.kubernetes_labs_workers.name
 }
