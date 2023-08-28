@@ -3,14 +3,14 @@ resource "aws_iam_role" "kubernetes_labs" {
 
   assume_role_policy = <<POLICY
   {
-	"Version": "2012-10-17"
-	"Statement": [
+	'Version': '2012-10-17'
+	'Statement': [
 		{
-			"Effect": "Allow",
-			"Principal": {
-				"Service": "eks.amazonaws.com"
+			'Effect': 'Allow',
+			'Principal': {
+				'Service': 'eks.amazonaws.com'
 			}
-			"Action": "sts:AssumeRole"
+			'Action': 'sts:AssumeRole'
 		}
 	]
   }
@@ -28,14 +28,14 @@ resource "aws_iam_role" "kubernetes_labs_workers" {
 
   assume_role_policy = <<POLICY
   {
-	"Version": "2012-10-17"
-	"Statement": [
+	'Version': '2012-10-17'
+	'Statement': [
 		{
-			"Effect": "Allow",
-			"Principal": {
-				"Service": "ec2.amazonaws.com"
+			'Effect': 'Allow',
+			'Principal': {
+				'Service': 'ec2.amazonaws.com'
 			}
-			"Action": "sts:AssumeRole"
+			'Action': 'sts:AssumeRole'
 		}
 	]
   }
