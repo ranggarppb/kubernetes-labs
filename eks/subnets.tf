@@ -37,11 +37,23 @@ resource "aws_subnet" "kubernetes_labs_private_1" {
 
   availability_zone = "ap-southeast-1a"
 
-  map_public_ip_on_launch = true
+  tags = {
+    Name                        = "main-private-1"
+    "kubernetes.io/cluster/eks" = "shared"
+    "kubernetes.io/role/internal-elb"    = 1
+  }
+}
+
+resource "aws_subnet" "kubernetes_labs_private_2" {
+  vpc_id = aws_vpc.kubernetes_labs.id
+
+  cidr_block = "192.168.192.0/18"
+
+  availability_zone = "ap-southeast-1b"
 
   tags = {
-    Name                              = "main-private-1"
-    "kubernetes.io/cluster/eks"       = "shared"
-    "kubernetes.io/role/internal-elb" = 1
+    Name                        = "main-private-2"
+    "kubernetes.io/cluster/eks" = "shared"
+    "kubernetes.io/role/internal-elb"    = 1
   }
 }
