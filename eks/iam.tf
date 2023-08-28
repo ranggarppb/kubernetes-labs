@@ -26,7 +26,7 @@ resource "aws_iam_role_policy_attachment" "kubernetes_labs" {
 resource "aws_iam_role" "kubernetes_labs_workers" {
   name = "eks-workers"
 
-  assume_role_policy = <<POLICY
+  assume_role_policy = <<EOT
 {
 "Version": "2012-10-17"
 "Statement": [
@@ -39,7 +39,7 @@ resource "aws_iam_role" "kubernetes_labs_workers" {
 	}
 ]
 }
-POLICY
+EOT
 }
 
 resource "aws_iam_role_policy_attachment" "kubernetes_labs_workers_general" {
