@@ -3,7 +3,7 @@ resource "aws_iam_role" "kubernetes_labs" {
 
   assume_role_policy = <<EOT
 {
-"Version": "2012-10-17"
+"Version": "2012-10-17",
 "Statement": [
 	{
 		"Effect": "Allow",
@@ -28,7 +28,7 @@ resource "aws_iam_role" "kubernetes_labs_workers" {
 
   assume_role_policy = <<EOT
 {
-"Version": "2012-10-17"
+"Version": "2012-10-17",
 "Statement": [
 	{
 		"Effect": "Allow",
