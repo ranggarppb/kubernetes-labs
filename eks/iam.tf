@@ -2,19 +2,19 @@ resource "aws_iam_role" "kubernetes_labs" {
   name = "eks-cluster"
 
   assume_role_policy = <<POLICY
-  {
-	'Version': '2012-10-17'
-	'Statement': [
-		{
-			'Effect': 'Allow',
-			'Principal': {
-				'Service': 'eks.amazonaws.com'
-			}
-			'Action': 'sts:AssumeRole'
+{
+"Version": "2012-10-17"
+"Statement": [
+	{
+		"Effect": "Allow",
+		"Principal": {
+			"Service": "eks.amazonaws.com"
 		}
-	]
-  }
-  POLICY
+		"Action": "sts:AssumeRole"
+	}
+]
+}
+POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "kubernetes_labs" {
@@ -27,19 +27,19 @@ resource "aws_iam_role" "kubernetes_labs_workers" {
   name = "eks-workers"
 
   assume_role_policy = <<POLICY
-  {
-	'Version': '2012-10-17'
-	'Statement': [
-		{
-			'Effect': 'Allow',
-			'Principal': {
-				'Service': 'ec2.amazonaws.com'
-			}
-			'Action': 'sts:AssumeRole'
+{
+"Version": "2012-10-17"
+"Statement": [
+	{
+		"Effect": "Allow",
+		"Principal": {
+			"Service": "ec2.amazonaws.com"
 		}
-	]
-  }
-  POLICY
+		"Action": "sts:AssumeRole"
+	}
+]
+}
+POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "kubernetes_labs_workers_general" {
