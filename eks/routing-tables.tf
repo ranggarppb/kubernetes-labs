@@ -16,7 +16,7 @@ resource "aws_route_table" "kubernetes_labs_private_1" {
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.kubernetes_labs_nat1
+    nat_gateway_id = aws_nat_gateway.kubernetes_labs_nat1.id
   }
 
   tags = {
@@ -29,7 +29,7 @@ resource "aws_route_table" "kubernetes_labs_private_2" {
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.kubernetes_labs_nat2
+    nat_gateway_id = aws_nat_gateway.kubernetes_labs_nat2.id
   }
 
   tags = {
