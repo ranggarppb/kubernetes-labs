@@ -28,6 +28,13 @@ resource "aws_iam_role" "gha_oidc_assume_role" {
             "token.actions.githubusercontent.com:sub" : ["repo:ranggarppb/kubernetes-labs:*"]
           }
         }
+      },
+      {
+        "Effect" : "Allow",
+        "Principal" : {
+          "AWS" : "arn:aws:iam::020612890700:user/ranggarppb"
+        },
+        "Action" : "sts:AssumeRole"
       }
     ]
   })
@@ -45,7 +52,7 @@ resource "aws_iam_role_policy" "gha_oidc_terraform_permissions" {
           "iam:*",
           "s3:*",
           "eks:*",
-		  "ec2:*"
+          "ec2:*"
         ]
         Effect   = "Allow"
         Resource = "*"

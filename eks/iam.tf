@@ -11,7 +11,14 @@ resource "aws_iam_role" "kubernetes_labs" {
 			"Service": "eks.amazonaws.com"
 		},
 		"Action": "sts:AssumeRole"
-	}
+	},
+	{
+        "Effect" : "Allow",
+        "Principal" : {
+          "AWS" : "arn:aws:iam::020612890700:user/ranggarppb"
+        },
+        "Action" : "sts:AssumeRole"
+    }
 ]
 }
 EOT
@@ -36,7 +43,14 @@ resource "aws_iam_role" "kubernetes_labs_workers" {
 			"Service": "ec2.amazonaws.com"
 		},
 		"Action": "sts:AssumeRole"
-	}
+	},
+	{
+        "Effect" : "Allow",
+        "Principal" : {
+          "AWS" : "arn:aws:iam::020612890700:user/ranggarppb"
+        },
+        "Action" : "sts:AssumeRole"
+    }
 ]
 }
 EOT
