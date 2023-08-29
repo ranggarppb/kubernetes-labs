@@ -7,8 +7,8 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-	profile = "ranggarppb"
-	key     = "github-action-oidc/terraform.tfstate"
+    profile = "ranggarppb"
+    key     = "github-action-oidc/terraform.tfstate"
     bucket  = "kubernetes-labs"
     region  = "ap-southeast-1"
     encrypt = true
