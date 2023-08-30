@@ -17,6 +17,11 @@ jobs:
   TerraformPlan:
     runs-on: ubuntu-latest
     steps:
+      - name: Installing dependencies
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: jq
+      
       - name: Git clone the repository
         uses: actions/checkout@v3
         
