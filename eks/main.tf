@@ -1,5 +1,5 @@
 module "terraform_eks_labs" {
-  source = "github.com/ranggarppb/terraform-eks-labs.git"
+  source = "ranggarppb/eks-labs/aws"
 
   region             = var.region
   availability_zones = var.availability_zones
