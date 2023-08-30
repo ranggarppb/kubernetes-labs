@@ -11,7 +11,7 @@ locals {
   ]
   map_users = [
     {
-      rolearn  = "arn:aws:iam::020612890700:root"
+      userarn  = "arn:aws:iam::020612890700:root"
       username = "ranggarppb"
       groups = [
         "system:masters"
