@@ -10,13 +10,13 @@ data "external" "cluster_ca_certificate" {
     "--name",
     "${aws_eks_cluster.kubernetes_labs.name}",
     "--query",
-    "cluster.certificateAuthority.data"
+    "cluster.certificateAuthority | jq -r '.' | {data: .data}"
   ]
 }
 
 provider "kubernetes" {
   host                   = aws_eks_cluster.kubernetes_labs.endpoint
-  cluster_ca_certificate = base64decode(data.external.cluster_ca_certificate.result)
+  cluster_ca_certificate = base64decode(data.external.cluster_ca_certificate.result.data)
   exec {
     api_version = "client.authentication.k8s.io/v1beta1"
     args        = ["eks", "get-token", "--cluster-name", aws_eks_cluster.kubernetes_labs.name]
