@@ -48,3 +48,21 @@ resource "kubernetes_cluster_role" "kubernetes_labs_reader" {
     verbs      = ["get", "list", "watch"]
   }
 }
+
+resource "kubernetes_cluster_role_binding" "kubernetes_labs" {
+  metadata {
+    name = "reader"
+  }
+
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "ClusterRole"
+    name      = "reader"
+  }
+
+  subject {
+    kind      = "Group"
+    name      = "reader"
+    api_group = "rbac.authorization.k8s.io"
+  }
+}
