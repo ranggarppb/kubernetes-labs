@@ -36,3 +36,33 @@ resource "kubernetes_config_map" "kubernetes_labs" {
 
   depends_on = [aws_eks_cluster.kubernetes_labs]
 }
+
+resource "kubernetes_cluster_role" "kubernetes_labs_reader" {
+  metadata {
+    name = "reader"
+  }
+
+  rule {
+    api_groups = [""]
+    resources  = ["deployments", "configmaps", "pods", "secrets", "services"]
+    verbs      = ["get", "list", "watch"]
+  }
+}
+
+resource "kubernetes_cluster_role_binding" "kubernetes_labs" {
+  metadata {
+    name = "reader"
+  }
+
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "ClusterRole"
+    name      = "reader"
+  }
+
+  subject {
+    kind      = "Group"
+    name      = "reader"
+    api_group = "rbac.authorization.k8s.io"
+  }
+}
