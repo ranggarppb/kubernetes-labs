@@ -45,6 +45,5 @@ jobs:
         id: plan
         run: |
           cd "${{ github.event.inputs.service }}"
-          export TF_LOG=DEBUG 
           echo "## Terraform Plan" >> $GITHUB_STEP_SUMMARY
           terraform plan -no-color >> $GITHUB_STEP_SUMMARY
