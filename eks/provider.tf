@@ -3,16 +3,7 @@ provider "aws" {
 }
 
 data "external" "cluster_ca_certificate" {
-  program = [
-    "aws",
-    "eks",
-    "describe-cluster",
-    "--name",
-    "${aws_eks_cluster.kubernetes_labs.name}",
-    "--query",
-    "cluster.certificateAuthority",
-	"jq -r ' . | {data: .data}'"
-  ]
+  program = ["bash", "cluster_ca_certificate.sh", aws_eks_cluster.kubernetes_labs.name]
 }
 
 provider "kubernetes" {
