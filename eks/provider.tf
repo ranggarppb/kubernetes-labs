@@ -9,7 +9,7 @@ data "external" "cluster_ca_certificate" {
     "describe-cluster",
 	"--name",
     "${aws_eks_cluster.kubernetes_labs.name}",
-	"| jq '.' | {body: .http.response.body}"
+	"| jq -r '.' | {body: .http.response.body}"
   ]
 }
 
