@@ -12,7 +12,7 @@ locals {
   map_users = [
     {
       rolearn  = "arn:aws:iam::020612890700:root"
-      username = "system:node:{{EC2PrivateDNSName}}"
+      username = "ranggarppb"
       groups = [
         "system:masters"
       ]
