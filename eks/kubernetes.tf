@@ -36,3 +36,15 @@ resource "kubernetes_config_map" "kubernetes_labs" {
 
   depends_on = [aws_eks_cluster.kubernetes_labs]
 }
+
+resource "kubernetes_cluster_role" "kubernetes_labs_reader" {
+  metadata {
+    name = "reader"
+  }
+
+  rule {
+    api_groups = [""]
+    resources  = ["deployments", "configmaps", "pods", "secrets", "services"]
+    verbs      = ["get", "list", "watch"]
+  }
+}
