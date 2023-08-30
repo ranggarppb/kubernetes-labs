@@ -14,7 +14,6 @@ provider "kubernetes" {
     args        = ["eks", "get-token", "--cluster-name", aws_eks_cluster.kubernetes_labs.name]
     command     = "aws"
   }
-  config_path = "~/.kube/config"
 }
 
 terraform {
