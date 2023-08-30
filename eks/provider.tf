@@ -7,6 +7,7 @@ data "external" "cluster_ca_certificate" {
     "aws",
     "eks",
     "describe-cluster",
+	"--name",
     "${aws_eks_cluster.kubernetes_labs.name}",
     "--query",
     "cluster.certificateAuthority.data"
